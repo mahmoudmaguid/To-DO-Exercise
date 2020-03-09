@@ -15,11 +15,11 @@
 }
 .container {
   background:none;
-  padding:25px;
+  padding:36px;
   max-width:760px;
   margin:25px auto;
   overflow:hidden;
-  border-radius:10px;
+  
   border:10px solid black;
   font-family: sans-serif;
 }
@@ -31,7 +31,7 @@
   max-width:760px;
   margin:25px auto;
   overflow:hidden;
-  border-radius:10px;
+  
   border:10px solid black;
   font-family: sans-serif;
 
@@ -39,9 +39,9 @@
 #addTask{
   background:none;
   border:2px solid #0005027e;
-  border-radius:10px;
-color: #00040a7e;
-font-size: 20px;
+
+  color: #00040a7e;
+  font-size: 36px;
 }
 .css-grid{
 
