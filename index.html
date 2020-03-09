@@ -8,21 +8,33 @@
 
 
 </head>
-<body>
 
-<div id="myDIV" class="header">
-  <h2 style="margin:5px"> To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
-
-<ul id="myUL">
-  <li>paly football</li>
-  <li class="checked">take out the trash </li>
- 
-</ul>
-
-
+  <body class="css-grid" >
+    <header class="Title">
+      <h1>Java Script To-Do List </h1>
+    </header>
+    <section class="container">
+      <h1> Add-To-Do Dos</h1>
+      <div class="new-task-container">
+      <label for="new-task">Enter Task :</label>
+      <input type="text" id="new-task">
+        <button id="addTask">Add Task</button>
+      </div>
+      <form class="todo-list">
+        <h2>Active to Do </h2>
+        <ul>
+          <li><input type="checkbox"><label>take out the trash</lable></li>
+        </ul>
+      </form>
+    </section>
+      <form class="complete-list">
+        <h2>Completed Tasks</h2>
+        <ul>
+          <li><input type="checkbox"><label>learn javascript </lable></li>
+            <li><input type="checkbox"><label>fix my laptop </lable></li>
+        </ul>
+      </form>
+    
 
 </body>
 </html>

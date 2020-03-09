@@ -1,61 +1,43 @@
+var newTask = document.querySelector('#new-task');
+var addTaskBtn = document.querySelector('#addTask');
+var toDoUl = document.querySelector(".todo-list ul");
+var completeUl =  document.querySelector(".complete-list ul");
+var createNewTask = function(task){
+  var listItem = document.createElement("li"); 
+  var checkBox = document.createElement("input"); 
+  var label = document.createElement("label"); 
+  label.innerText = task;
+  checkBox.type = "checkbox";
+  listItem.appendChild(checkBox);
+  listItem.appendChild(label);
+  return listItem;  
+};
+var addTask = function(){
+  var listItem = createNewTask(newTask.value);
+  toDoUl.appendChild(listItem); 
+  newTask.value="";
+  bindIncompleteItems(listItem, completeTask);
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+};
+
+var completeTask = function(){
+  
+  listItem = this.parentNode;
+
+   checkBox = listItem.querySelector("input[type=checkbox]");
+  checkBox.remove();
+  
+  completeUl.appendChild(listItem); 
+  bindCompleteItems(listItem);
+};
+var bindIncompleteItems = function(taskItem, checkBoxClick){  
+  
+  var checkBox = taskItem.querySelector("input[type=checkbox]");
+  
+  checkBox.oninput = checkBoxClick;  
+}; 
+for(var i=0; i < toDoUl.children.length; i++) {
+  bindIncompleteItems(toDoUl.children[i], completeTask);
 }
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-
-
-
-
+addTaskBtn.addEventListener("click", addTask);
 
